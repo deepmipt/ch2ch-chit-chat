@@ -1,6 +1,10 @@
 from ch2ch import interface
+import os
 
-interface.init('[path]/model')
+model_path = os.environ.get("CHITCHAT_MODEL")
+interface.init(model_path)
 
-answer = interface.send('Здравствуйте, нет заисления зарплаты по реестру 9 от 31.03.17 года, реестр висит со вчерашнего дня?')
-print(answer)
+while True:
+    q = input("[Ваш вопрос]> ")
+    r = interface.send(q)
+    print("[Ответ]> %s" % r)
